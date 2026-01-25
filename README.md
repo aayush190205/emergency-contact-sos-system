@@ -164,25 +164,25 @@ Expected response:
 }
 
 Screenshots & Proof of Work
-GitHub Repository
+## Screenshots & Proof of Work
 
+### GitHub Repository
+![Repo Home](docs/screenshots/01-github-repo-home.jpg)
+![Repo Structure](docs/screenshots/02-repo-structure.jpg)
 
+### GitHub Management
+![Branches](docs/screenshots/03-github-branches.jpg)
+![Commits](docs/screenshots/04-github-commits.jpg)
+![Issues](docs/screenshots/05-github-issues.jpg)
 
+### Docker & Application
+![Docker Running](docs/screenshots/06-docker-running.jpg)
+![Backend Running](docs/screenshots/07-backend-running.jpg)
+![Frontend UI](docs/screenshots/08-frontend-ui.jpg)
 
-GitHub Management
-
-
-
-
-Docker & Application
-
-
-
-
-
-
-Design Artifacts
-
+### Design Artifacts
+![Architecture Diagram](docs/screenshots/09-architecture-diagram.png)
+![Figma Screens](docs/screenshots/10-figma-screens.png)
 Project Status (Review-1)
 Completed
 
