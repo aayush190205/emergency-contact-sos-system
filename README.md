@@ -16,14 +16,14 @@ In emergency situations, users often:
 - Lose time searching for help
 - Face internet or usability limitations
 
-This project solves these issues by offering a **centralized SOS dashboard**, **visual-first emergency actions**, and **minimal user interaction** to reduce response time and confusion.
+This project addresses these challenges by offering a **centralized SOS dashboard**, **visual-first emergency actions**, and **minimal user interaction** to reduce response time and confusion.
 
 ---
 
 ## Target Users (Personas)
 
 | User Group | Description |
-|-----------|------------|
+|----------|-------------|
 | General Users | Need immediate emergency assistance |
 | Senior Citizens | Require simple and accessible UI |
 | Students & Children | Need intuitive and visual emergency actions |
@@ -34,7 +34,7 @@ This project solves these issues by offering a **centralized SOS dashboard**, **
 
 ## Vision Statement
 
-To create a **fast, accessible, and reliable emergency awareness system** that enables users to take immediate action during emergencies, regardless of login status or technical ability.
+To build a **fast, accessible, and reliable emergency awareness system** that enables users to take immediate action during emergencies, regardless of login status or technical ability.
 
 ---
 
@@ -67,95 +67,95 @@ The following prioritization matrix outlines the feature scope for the SafeConne
 
 ## User Stories
 
-- **25 user stories** captured using **GitHub Issues**
-- Managed through **GitHub Projects (Kanban board)**
+- **25 user stories** implemented using **GitHub Issues**
+- All stories are user-focused and numbered for traceability
 
 ---
 
 ## System Architecture
 
-The system uses a **Dockerized microservices architecture**:
-
-- **Frontend:** React
-- **Backend:** Node.js + Express
-- **Database:** MongoDB
-- **Networking:** Docker bridge network
-- **Deployment:** Local Docker host (Review-1)
+**Technology Stack**
+- Frontend: React
+- Backend: Node.js + Express
+- Database: MongoDB
+- Containerization: Docker & Docker Compose
+- Deployment: Local Docker Host (Review-1)
 
 ### Architecture Diagram
-![System Architecture](docs/architecture-diagram.png)
+![Architecture Diagram](docs/screenshots/09-architecture-diagram.jpg)
 
 ---
 
 ## Project Structure
 
-emergency-contact-sos-system/
-│
+```text
+emergency-sos-system/
 ├── client/
-│ ├── src/
-│ ├── public/
-│ ├── Dockerfile
-│ ├── package.json
-│ └── .dockerignore
+│   ├── src/
+│   ├── public/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── .dockerignore
 │
 ├── server/
-│ ├── server.js
-│ ├── Dockerfile
-│ ├── package.json
-│ └── .dockerignore
+│   ├── server.js
+│   ├── Dockerfile
+│   ├── package.json
+│   └── .dockerignore
 │
 ├── docker-compose.yml
 ├── .gitignore
-└── README.md
+├── README.md
+└── docs/
+    └── screenshots/
+Branching Strategy
 
----
+This project follows GitHub Flow:
 
-## Branching Strategy
+main branch for stable code
 
-This project follows **GitHub Flow**:
+Feature branches for development
 
-- `main` branch for stable code
-- Feature branches for development
+Branch Screenshot
 
-Example:
+Local Development Tools
 
-### Branch Screenshot
-![GitHub Branches](docs/github-branches.png)
+Node.js
 
----
+React
 
-## Local Development Tools
+Express.js
 
-- Node.js
-- React
-- Express.js
-- MongoDB
-- Docker Desktop
-- GitHub
-- Figma
-- Draw.io
+MongoDB
 
----
+Docker Desktop
 
-## Quick Start – Local Development
+GitHub
 
-### Prerequisites
-- Docker Desktop installed and running
+Figma
 
-### Run Application
+Draw.io
 
-```bash
+Quick Start – Local Development
+Prerequisites
+
+Docker Desktop installed and running
+
+Run the Application
 docker-compose up --build
-| Service  | URL                                            |
-| -------- | ---------------------------------------------- |
-| Frontend | [http://localhost:3000](http://localhost:3000) |
-| Backend  | [http://localhost:5000](http://localhost:5000) |
-| MongoDB  | localhost:27017                                |
+
+Service URLs
+Service	URL
+Frontend	http://localhost:3000
+
+Backend	http://localhost:5000
+
+MongoDB	localhost:27017
 Backend Health Check
 GET http://localhost:5000/
 
 
-Expected Response:
+Expected response:
 
 {
   "status": "System Online",
@@ -164,36 +164,39 @@ Expected Response:
 }
 
 Screenshots & Proof of Work
-Repository Structure
-
-GitHub Issues (User Stories)
-
-Docker Setup
+GitHub Repository
 
 
 
 
-Application Running
+GitHub Management
 
 
 
 
-Figma UI Screens
+Docker & Application
+
+
+
+
+
+
+Design Artifacts
 
 Project Status (Review-1)
 Completed
 
 Vision document
 
-User stories & MoSCoW prioritization
+MoSCoW prioritization
+
+25 GitHub user stories
 
 UI design (Figma)
 
 Architecture design (Draw.io)
 
-Frontend implementation
-
-Backend implementation
+Frontend & backend implementation
 
 MongoDB integration
 
