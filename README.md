@@ -108,6 +108,7 @@ emergency-sos-system/
 ├── README.md
 └── docs/
     └── screenshots/
+```
 Branching Strategy
 
 This project follows GitHub Flow:
