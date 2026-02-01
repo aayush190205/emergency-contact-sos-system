@@ -82,7 +82,7 @@ The following prioritization matrix outlines the feature scope for the SafeConne
 - Deployment: Local Docker Host (Review-1)
 
 ### Architecture Diagram
-![Architecture Diagram](docs/screenshots/09-architecture-diagram.jpg)
+![Architecture Diagram](docs/screenshots/09-architecture-diagram.png)
 
 ---
 
