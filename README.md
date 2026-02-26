@@ -1,4 +1,4 @@
-# Emergency Contact & SOS Awareness System
+# SafeConnect: Emergency Contact & SOS Awareness System
 
 ## Project Overview
 
@@ -11,10 +11,10 @@ The system is designed to work **without mandatory login**, ensuring accessibili
 ## Problem Statement
 
 In emergency situations, users often:
-- Panic and are unable to navigate complex applications
-- Do not remember emergency contact numbers
-- Lose time searching for help
-- Face internet or usability limitations
+- Panic and are unable to navigate complex applications.
+- Do not remember emergency contact numbers.
+- Lose time searching for help.
+- Face internet or usability limitations.
 
 This project addresses these challenges by offering a **centralized SOS dashboard**, **visual-first emergency actions**, and **minimal user interaction** to reduce response time and confusion.
 
@@ -23,12 +23,12 @@ This project addresses these challenges by offering a **centralized SOS dashboar
 ## Target Users (Personas)
 
 | User Group | Description |
-|----------|-------------|
-| General Users | Need immediate emergency assistance |
-| Senior Citizens | Require simple and accessible UI |
-| Students & Children | Need intuitive and visual emergency actions |
-| Guest Users | Need emergency access without login |
-| Administrators | Manage system users and monitor status |
+| :--- | :--- |
+| **General Users** | Need immediate emergency assistance. |
+| **Senior Citizens** | Require simple, high-contrast, and accessible UI. |
+| **Students & Children** | Need intuitive and visual emergency actions. |
+| **Guest Users** | Need emergency access instantly without a login barrier. |
+| **Administrators** | Manage system users and monitor system health. |
 
 ---
 
@@ -41,189 +41,173 @@ To build a **fast, accessible, and reliable emergency awareness system** that en
 ## Key Features
 
 ### User Features
-- SOS emergency trigger
-- Police, medical, and fire service access
-- Live location fetching
-- Guest mode with restricted access
-- Full dashboard for registered users
-- Visual SOS broadcast mode
+- One-tap SOS emergency trigger.
+- Quick-dial access for Police, Medical, and Fire services.
+- Live Geolocation fetching (Lat/Long).
+- Frictionless Guest Mode with restricted speed-dial access.
+- Visual SOS broadcast mode (Red Alert screen).
 
 ### Admin Features
-- Secure admin login
-- View registered users
-- System and database status monitoring
+- Secure admin login portal.
+- View and refresh the registered users database.
+- System and database status monitoring.
 
 ---
-## MoSCoW Prioritization
 
-The following prioritization matrix outlines the feature scope for the SafeConnect system, ensuring critical emergency functionality is delivered first.
+## MoSCoW Prioritization
 
 | Priority | Category | Features Included | Justification |
 | :--- | :--- | :--- | :--- |
-| **M** | **MUST HAVE**<br>*(Critical for MVP)* | • **SOS Trigger Button**<br>• **Live Geolocation (Lat/Long)**<br>• **User Authentication (Login/Signup)**<br>• **Guest Access Mode**<br>• **Database Persistence (MongoDB)**<br>• **Dockerized Setup** | These are the non-negotiable core requirements. The system is non-functional as an emergency tool without these features. |
-| **S** | **SHOULD HAVE**<br>*(High Priority)* | • **Admin Dashboard**<br>• **Speed Dials (Police/Medical)**<br>• **System Diagnostics Animation**<br>• **Responsive Design** | Essential for a usable and complete product experience, though the core SOS signal could technically function without them. |
-| **C** | **COULD HAVE**<br>*(Nice to Have)* | • **AI Safety Chatbot**<br>• **Dark/Light Mode Toggle**<br>• **First Aid Content Pages**<br>• **SMS/Email Integration** | Desirable features that enhance user experience but are not critical for the immediate emergency response loop. |
-| **W** | **WON'T HAVE**<br>*(Out of Scope)* | • **Video Streaming**<br>• **Payment Gateways**<br>• **Social Media Sharing**<br>• **Voice Calls** | These features add unnecessary complexity and distraction from the primary goal of rapid emergency signaling. |
+| **M** | **MUST HAVE**<br>*(Critical for MVP)* | • SOS Trigger Button<br>• Live Geolocation (Lat/Long)<br>• User Authentication<br>• Guest Access Mode<br>• MongoDB Persistence<br>• Dockerized Setup | These are non-negotiable core requirements. The system is non-functional as an emergency tool without them. |
+| **S** | **SHOULD HAVE**<br>*(High Priority)* | • Admin Dashboard<br>• Speed Dials (Police/Medical)<br>• System Diagnostics Animation<br>• Responsive Design | Essential for a usable and complete product experience. |
+| **C** | **COULD HAVE**<br>*(Nice to Have)* | • AI Safety Chatbot<br>• Dark/Light Mode Toggle<br>• First Aid Content Pages | Desirable features that enhance UX but are not critical for the immediate SOS loop. |
+| **W** | **WON'T HAVE**<br>*(Out of Scope)* | • Video Streaming<br>• Payment Gateways<br>• Voice Calls | Add unnecessary complexity and distraction from the primary goal of rapid emergency signaling. |
+
+---
+
+## Software Design (Review 2)
+
+SafeConnect employs a containerized **Client-Server Architecture**. To ensure high maintainability and low coupling, the React frontend is modularized into a component-based structure (Pages and UI Components), isolating rendering logic. The Node.js backend utilizes a strict **MVC (Model-View-Controller)** pattern, separating database schemas (`models`), business logic (`controllers`), and API endpoints (`routes`).
+
+*Diagrams and Design Assets can be found in the `docs/design/` folder.*
+
+---
 
 ## User Stories
 
-- **25 user stories** implemented using **GitHub Issues**
-- All stories are user-focused and numbered for traceability
+- **25 user stories** implemented using **GitHub Projects & Issues**.
+- All stories are user-focused, numbered for traceability, and categorized by Epic.
 
 ---
 
-## System Architecture
+## System Architecture & Tech Stack
 
 **Technology Stack**
-- Frontend: React
-- Backend: Node.js + Express
-- Database: MongoDB
-- Containerization: Docker & Docker Compose
-- Deployment: Local Docker Host (Review-1)
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Containerization:** Docker & Docker Compose
+- **Design & Flow:** Figma, Draw.io
 
-### Architecture Diagram
-![Architecture Diagram](docs/screenshots/09-architecture-diagram.png)
-
----
-
-## Project Structure
+### Project Structure
 
 ```text
-### Project Structure
 EMERGENCY-SOS-SYSTEM/
 ├── client/                     # React Frontend (UI Layer)
 │   ├── src/
 │   │   ├── components/         # Reusable, highly cohesive UI widgets
-│   │   │   ├── Icons.js        # SVG Icon library
-│   │   │   └── ServiceCard.js  # Emergency contact button component
 │   │   ├── pages/              # Modular application screens
-│   │   │   ├── AdminPage.js    # System monitoring dashboard
-│   │   │   ├── DashboardPage.js# Main SOS trigger interface
-│   │   │   └── LoginPage.js    # Authentication and Guest access
 │   │   └── App.js              # Centralized routing and state management
-│   ├── .env                    # Environment variables (API configuration)
-│   └── Dockerfile              # Frontend container configuration
+│   ├── .env                    # Environment variables (API config)
+│   └── Dockerfile              # Frontend container config
 │
 ├── server/                     # Node.js Backend (MVC Architecture)
 │   ├── controllers/            # Business logic and request handling
-│   │   └── authController.js   # Auth and user management logic
-│   ├── models/                 # Database schemas and shared state
-│   │   └── User.js             # Mongoose User schema & Memory fallback
+│   ├── models/                 # Database schemas & memory fallback
 │   ├── routes/                 # API endpoint definitions
-│   │   └── apiRoutes.js        # Express router mapping
-│   ├── server.js               # Application entry point and DB connection
-│   └── Dockerfile              # Backend container configuration
+│   ├── server.js               # App entry point & DB connection
+│   └── Dockerfile              # Backend container config
 │
-├── design/                     # Software Design Document & Visual Assets
-│   ├── SafeConnect_Architecture.drawio
-│   └── SafeConnect_Architecture.png
+├── docs/
+│   └── design/                 # Software Design Document & Visual Assets
+│       ├── 01-github-repo-home.jpg
+│       ├── 02-repo-structure.jpg
+│       ├── 03-github-branches.jpg
+│       ├── 04-github-commits.jpg
+│       ├── 05-github-issues.jpg
+│       ├── 06-docker-running.jpg
+│       ├── 07-backend-running.jpg
+│       ├── 08-frontend-ui.jpg
+│       ├── 09-architecture-diagram.png
+│       └── 10-figma-screens.png
 │
-└── docker-compose.yml          # Container orchestration (Client, Server, Mongo)
+└── docker-compose.yml          # Container orchestration
 ```
-Branching Strategy
+### Branching Strategy
 
 This project follows GitHub Flow:
+* main branch for stable code
+* Feature branches for development
 
-main branch for stable code
+[Branch Screenshot]
 
-Feature branches for development
+### Local Development Tools
+* Node.js
+* React
+* Express.js
+* MongoDB
+* Docker Desktop
+* GitHub
+* Figma
+* Draw.io
 
-Branch Screenshot
+---
 
-Local Development Tools
+### Quick Start – Local Development
 
-Node.js
-
-React
-
-Express.js
-
-MongoDB
-
-Docker Desktop
-
-GitHub
-
-Figma
-
-Draw.io
-
-Quick Start – Local Development
-Prerequisites
-
+**Prerequisites**
 Docker Desktop installed and running
 
-Run the Application
+**Run the Application**
+```bash
 docker-compose up --build
-
 Service URLs
-Service	URL
-Frontend	http://localhost:3000
 
-Backend	http://localhost:5000
+Frontend: http://localhost:3000
 
-MongoDB	localhost:27017
+Backend: http://localhost:5000
+
+MongoDB: localhost:27017
+
 Backend Health Check
 GET http://localhost:5000/
 
-
 Expected response:
 
+JSON
 {
   "status": "System Online",
   "database": "MongoDB / Memory",
   "timestamp": "..."
 }
-
-Screenshots & Proof of Work
 ## Screenshots & Proof of Work
 
 ### GitHub Repository
-![Repo Home](docs/screenshots/01-github-repo-home.jpg)
-![Repo Structure](docs/screenshots/02-repo-structure.jpg)
+![Repo Home](docs/design/01-github-repo-home.jpg)
+![Repo Structure](docs/design/02-repo-structure.jpg)
 
 ### GitHub Management
-![Branches](docs/screenshots/03-github-branches.jpg)
-![Commits](docs/screenshots/04-github-commits.jpg)
-![Issues](docs/screenshots/05-github-issues.jpg)
+![Branches](docs/design/03-github-branches.jpg)
+![Commits](docs/design/04-github-commits.jpg)
+![Issues](docs/design/05-github-issues.jpg)
 
 ### Docker & Application
-![Docker Running](docs/screenshots/06-docker-running.jpg)
-![Backend Running](docs/screenshots/07-backend-running.jpg)
-![Frontend UI](docs/screenshots/08-frontend-ui.jpg)
+![Docker Running](docs/design/06-docker-running.jpg)
+![Backend Running](docs/design/07-backend-running.jpg)
+![Frontend UI](docs/design/08-frontend-ui.jpg)
 
 ### Design Artifacts
-![Architecture Diagram](docs/screenshots/09-architecture-diagram.png)
-![Figma Screens](docs/screenshots/10-figma-screens.png)
-Project Status (Review-1)
-Completed
+![Architecture Diagram](docs/design/09-architecture-diagram.png)
+![Figma Screens](docs/design/10-figma-screens.png)
 
-Vision document
+---
 
-MoSCoW prioritization
+## Project Status
 
-25 GitHub user stories
+### ✅ Completed (Review-1 & 2)
+* Vision document
+* MoSCoW prioritization
+* 25 GitHub user stories
+* UI design (Figma)
+* Architecture design (Draw.io)
+* Frontend & backend implementation
+* MongoDB integration
+* Docker & Docker Compose setup
 
-UI design (Figma)
-
-Architecture design (Draw.io)
-
-Frontend & backend implementation
-
-MongoDB integration
-
-Docker & Docker Compose setup
-
-Upcoming
-
-Feature enhancements
-
-Security hardening
-
-Cloud deployment
-
-Final testing
-
+### ⏳ Upcoming
+* Feature enhancements
+* Security hardening
+* Cloud deployment
+* Final testing
 Disclaimer
-
 This system provides emergency awareness and guidance only and does not replace official emergency services.
