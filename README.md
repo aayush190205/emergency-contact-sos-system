@@ -82,32 +82,44 @@ The following prioritization matrix outlines the feature scope for the SafeConne
 - Deployment: Local Docker Host (Review-1)
 
 ### Architecture Diagram
-![Architecture Diagram](docs/screenshots/09-architecture-diagram.jpg)
+![Architecture Diagram](docs/screenshots/09-architecture-diagram.png)
 
 ---
 
 ## Project Structure
 
 ```text
-emergency-sos-system/
-├── client/
+### Project Structure
+EMERGENCY-SOS-SYSTEM/
+├── client/                     # React Frontend (UI Layer)
 │   ├── src/
-│   ├── public/
-│   ├── Dockerfile
-│   ├── package.json
-│   └── .dockerignore
+│   │   ├── components/         # Reusable, highly cohesive UI widgets
+│   │   │   ├── Icons.js        # SVG Icon library
+│   │   │   └── ServiceCard.js  # Emergency contact button component
+│   │   ├── pages/              # Modular application screens
+│   │   │   ├── AdminPage.js    # System monitoring dashboard
+│   │   │   ├── DashboardPage.js# Main SOS trigger interface
+│   │   │   └── LoginPage.js    # Authentication and Guest access
+│   │   └── App.js              # Centralized routing and state management
+│   ├── .env                    # Environment variables (API configuration)
+│   └── Dockerfile              # Frontend container configuration
 │
-├── server/
-│   ├── server.js
-│   ├── Dockerfile
-│   ├── package.json
-│   └── .dockerignore
+├── server/                     # Node.js Backend (MVC Architecture)
+│   ├── controllers/            # Business logic and request handling
+│   │   └── authController.js   # Auth and user management logic
+│   ├── models/                 # Database schemas and shared state
+│   │   └── User.js             # Mongoose User schema & Memory fallback
+│   ├── routes/                 # API endpoint definitions
+│   │   └── apiRoutes.js        # Express router mapping
+│   ├── server.js               # Application entry point and DB connection
+│   └── Dockerfile              # Backend container configuration
 │
-├── docker-compose.yml
-├── .gitignore
-├── README.md
-└── docs/
-    └── screenshots/
+├── design/                     # Software Design Document & Visual Assets
+│   ├── SafeConnect_Architecture.drawio
+│   └── SafeConnect_Architecture.png
+│
+└── docker-compose.yml          # Container orchestration (Client, Server, Mongo)
+```
 Branching Strategy
 
 This project follows GitHub Flow:

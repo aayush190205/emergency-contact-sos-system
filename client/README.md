@@ -1,70 +1,230 @@
-# Getting Started with Create React App
+# 🚨 Emergency Contact & SOS Awareness System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+The **Emergency Contact & SOS Awareness System** is a web-based emergency response and awareness application that provides instant access to emergency services, SOS alerts, and location-based assistance during critical situations.
 
-In the project directory, you can run:
+The system is designed to work **without mandatory login**, ensuring accessibility during panic scenarios. It supports **guest users, registered users, and administrators**, and follows a **Dockerized microservices architecture** for consistency and scalability.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Problem Statement
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In emergency situations, users often:
 
-### `npm test`
+- Panic and are unable to navigate complex applications  
+- Do not remember emergency contact numbers  
+- Lose time searching for help  
+- Face internet or usability limitations  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project addresses these challenges by offering a **centralized SOS dashboard**, **visual-first emergency actions**, and **minimal user interaction** to reduce response time and confusion.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Target Users (Personas)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| User Group | Description |
+|-----------|-------------|
+| General Users | Need immediate emergency assistance |
+| Senior Citizens | Require simple and accessible UI |
+| Students & Children | Need intuitive and visual emergency actions |
+| Guest Users | Need emergency access without login |
+| Administrators | Manage system users and monitor status |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Vision Statement
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To build a **fast, accessible, and reliable emergency awareness system** that enables users to take immediate action during emergencies, regardless of login status or technical ability.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Key Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### User Features
+- SOS emergency trigger  
+- Police, medical, and fire service access  
+- Live location fetching  
+- Guest mode with restricted access  
+- Full dashboard for registered users  
+- Visual SOS broadcast mode  
 
-## Learn More
+### Admin Features
+- Secure admin login  
+- View registered users  
+- System and database status monitoring  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## MoSCoW Prioritization
 
-### Code Splitting
+The following prioritization matrix outlines the feature scope for the **SafeConnect system**, ensuring critical emergency functionality is delivered first.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Priority | Category | Features Included | Justification |
+|--------|----------|------------------|---------------|
+| **M** | MUST HAVE (Critical for MVP) | SOS Trigger Button, Live Geolocation (Lat/Long), User Authentication (Login/Signup), Guest Access Mode, Database Persistence (MongoDB), Dockerized Setup | These are the non-negotiable core requirements. The system is non-functional as an emergency tool without these features. |
+| **S** | SHOULD HAVE (High Priority) | Admin Dashboard, Speed Dials (Police/Medical), System Diagnostics Animation, Responsive Design | Essential for a usable and complete product experience, though the core SOS signal could technically function without them. |
+| **C** | COULD HAVE (Nice to Have) | AI Safety Chatbot, Dark/Light Mode Toggle, First Aid Content Pages, SMS/Email Integration | Desirable features that enhance user experience but are not critical for the immediate emergency response loop. |
+| **W** | WON’T HAVE (Out of Scope) | Video Streaming, Payment Gateways, Social Media Sharing, Voice Calls | These features add unnecessary complexity and distraction from the primary goal of rapid emergency signaling. |
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## User Stories
 
-### Making a Progressive Web App
+- 25 user stories implemented using GitHub Issues  
+- All stories are user-focused and numbered for traceability  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## System Architecture
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Technology Stack
 
-### Deployment
+- **Frontend:** React  
+- **Backend:** Node.js + Express  
+- **Database:** MongoDB  
+- **Containerization:** Docker & Docker Compose  
+- **Deployment:** Local Docker Host (Review-1)  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Architecture Diagram
 
-### `npm run build` fails to minify
+![Architecture Diagram](docs/screenshots/09-architecture-diagram.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Project Structure
+
+emergency-sos-system/
+├── client/
+│ ├── src/
+│ ├── public/
+│ ├── Dockerfile
+│ ├── package.json
+│ └── .dockerignore
+│
+├── server/
+│ ├── server.js
+│ ├── Dockerfile
+│ ├── package.json
+│ └── .dockerignore
+│
+├── docker-compose.yml
+├── .gitignore
+├── README.md
+└── docs/
+└── screenshots/
+
+---
+
+## Branching Strategy
+
+This project follows **GitHub Flow**:
+
+- `main` branch for stable code  
+- Feature branches for development  
+
+### Branch Screenshot
+
+![Branches](docs/screenshots/03-github-branches.jpg)
+
+---
+
+## Local Development Tools
+
+- Node.js  
+- React  
+- Express.js  
+- MongoDB  
+- Docker Desktop  
+- GitHub  
+- Figma  
+- Draw.io  
+
+---
+
+## Quick Start – Local Development
+
+### Prerequisites
+
+- Docker Desktop installed and running  
+
+### Run the Application
+
+```bash
+docker-compose up --build
+Service URLs
+Service	URL
+Frontend	http://localhost:3000
+
+Backend	http://localhost:5000
+
+MongoDB	localhost:27017
+Backend Health Check
+GET http://localhost:5000/
+
+
+Expected response:
+
+{
+  "status": "System Online",
+  "database": "MongoDB / Memory",
+  "timestamp": "..."
+}
+
+Screenshots & Proof of Work
+GitHub Repository
+
+
+
+
+GitHub Management
+
+
+
+
+
+
+Docker & Application
+
+
+
+
+
+
+Design Artifacts
+
+
+
+
+Project Status (Review-1)
+Completed
+
+Vision document
+
+MoSCoW prioritization
+
+25 GitHub user stories
+
+UI design (Figma)
+
+Architecture design (Draw.io)
+
+Frontend & backend implementation
+
+MongoDB integration
+
+Docker & Docker Compose setup
+
+Upcoming
+
+Feature enhancements
+
+Security hardening
+
+Cloud deployment
+
+Final testing
+
+Disclaimer
+
+This system provides emergency awareness and guidance only and does not replace official emergency services.
