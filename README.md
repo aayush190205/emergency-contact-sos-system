@@ -173,22 +173,22 @@ JSON
 ## Screenshots & Proof of Work
 
 ### GitHub Repository
-![Repo Home](docs/design/01-github-repo-home.jpg)
-![Repo Structure](docs/design/02-repo-structure.jpg)
+![Repo Home](design/01-github-repo-home.jpg)
+![Repo Structure](design/02-repo-structure.jpg)
 
 ### GitHub Management
-![Branches](docs/design/03-github-branches.jpg)
-![Commits](docs/design/04-github-commits.jpg)
-![Issues](docs/design/05-github-issues.jpg)
+![Branches](design/03-github-branches.jpg)
+![Commits](design/04-github-commits.jpg)
+![Issues](design/05-github-issues.jpg)
 
 ### Docker & Application
-![Docker Running](docs/design/06-docker-running.jpg)
-![Backend Running](docs/design/07-backend-running.jpg)
-![Frontend UI](docs/design/08-frontend-ui.jpg)
+![Docker Running](design/06-docker-running.jpg)
+![Backend Running](design/07-backend-running.jpg)
+![Frontend UI](design/08-frontend-ui.jpg)
 
 ### Design Artifacts
-![Architecture Diagram](docs/design/09-architecture-diagram.png)
-![Figma Screens](docs/design/10-figma-screens.png)
+![Architecture Diagram](design/09-architecture-diaqram.pnq)
+![Figma Screens](design/10-figma-screens.png)
 
 ---
 
