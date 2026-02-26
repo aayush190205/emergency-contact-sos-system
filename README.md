@@ -170,6 +170,7 @@ JSON
   "database": "MongoDB / Memory",
   "timestamp": "..."
 }
+```
 ## Screenshots & Proof of Work
 
 ### GitHub Repository
