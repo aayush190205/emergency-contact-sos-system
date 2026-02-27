@@ -65,11 +65,31 @@ To build a **fast, accessible, and reliable emergency awareness system** that en
 
 ---
 
-## Software Design (Review 2)
+## Software Design & Architecture
 
-SafeConnect employs a containerized **Client-Server Architecture**. To ensure high maintainability and low coupling, the React frontend is modularized into a component-based structure (Pages and UI Components), isolating rendering logic. The Node.js backend utilizes a strict **MVC (Model-View-Controller)** pattern, separating database schemas (`models`), business logic (`controllers`), and API endpoints (`routes`).
+SafeConnect is built on a **Client-Server Microservices** model, prioritizing high availability and separation of concerns.
 
-*Diagrams and Design Assets can be found in the `docs/design/` folder.*
+### Design Principles Applied:
+- **Abstraction:** Complex logic for geospatial tracking and Docker networking is hidden behind simple API interfaces, reducing frontend cognitive load.
+- **Modularity:** The React frontend is normalized into independent `components/`, `pages/`, and `App.js` layers, while the backend follows a strict **MVC (Model-View-Controller)** pattern.
+- **Low Coupling:** The frontend and backend communicate exclusively via RESTful JSON APIs, allowing either stack to be updated or replaced without affecting the other.
+
+
+
+### Design Assets:
+- **Architecture Diagram:** [View Source (Draw.io)](design/09-architecture-diagram.png)
+- **Figma Prototype:** [Interactive Design Link](https://www.figma.com/design/VwCXnGxN0injGcRJxx3ByM/Untitled?node-id=0-1&t=ccThDtaSKTexUO9m-1)
+- **Full Design Board:** [View Master Board](design/10-figma-screens.png)
+
+####  UI Screen Gallery
+| Screen | Link |
+| :--- | :--- |
+| **01. Login** | [View Interface](design/figma-screen-1.png) |
+| **02. Registration** | [View Interface](design/figma-screen-2.png) |
+| **03. Guest Dashboard** | [View Interface](design/figma-screen-3.png) |
+| **04. User Dashboard** | [View Interface](design/figma-screen-4.png) |
+| **05. Active SOS State** | [View Interface](design/figma-screen-5.png) |
+| **06. Admin Center** | [View Interface](design/figma-screen-6.png) |
 
 ---
 
@@ -95,33 +115,40 @@ SafeConnect employs a containerized **Client-Server Architecture**. To ensure hi
 EMERGENCY-SOS-SYSTEM/
 ├── client/                     # React Frontend (UI Layer)
 │   ├── src/
-│   │   ├── components/         # Reusable, highly cohesive UI widgets
-│   │   ├── pages/              # Modular application screens
-│   │   └── App.js              # Centralized routing and state management
-│   ├── .env                    # Environment variables (API config)
-│   └── Dockerfile              # Frontend container config
+│   │   ├── components/         # Reusable UI widgets (SOSButton, Map)
+│   │   ├── pages/              # Modular screens (Dashboard, Login)
+│   │   └── App.js              # Centralized routing & logic
+│   ├── .env                    # Environment variables
+│   └── Dockerfile              # Frontend containerization
 │
 ├── server/                     # Node.js Backend (MVC Architecture)
-│   ├── controllers/            # Business logic and request handling
-│   ├── models/                 # Database schemas & memory fallback
+│   ├── controllers/            # Business logic (SOS/Auth handling)
+│   ├── models/                 # Database schemas (Mongoose/MongoDB)
 │   ├── routes/                 # API endpoint definitions
-│   ├── server.js               # App entry point & DB connection
-│   └── Dockerfile              # Backend container config
+│   ├── server.js               # Entry point & DB connection
+│   └── Dockerfile              # Backend containerization
 │
-├── docs/
-│   └── design/                 # Software Design Document & Visual Assets
-│       ├── 01-github-repo-home.jpg
-│       ├── 02-repo-structure.jpg
-│       ├── 03-github-branches.jpg
-│       ├── 04-github-commits.jpg
-│       ├── 05-github-issues.jpg
-│       ├── 06-docker-running.jpg
-│       ├── 07-backend-running.jpg
-│       ├── 08-frontend-ui.jpg
-│       ├── 09-architecture-diagram.png
-│       └── 10-figma-screens.png
+├── design/                     # Documentation & Visual Assets
+│   ├── 01-github-repo-home.jpg
+│   ├── 02-repo-structure.jpg
+│   ├── 03-github-branches.jpg
+│   ├── 04-github-commits.jpg
+│   ├── 05-github-issues.jpg
+│   ├── 06-docker-running.jpg
+│   ├── 07-backend-running.jpg
+│   ├── 08-frontend-ui.jpg
+│   ├── 09-architecture-diagram.png
+│   ├── 10-figma-screens.png
+│   ├── figma-screen-1.png      # Secure Login Interface
+│   ├── figma-screen-2.png      # New User Registration
+│   ├── figma-screen-3.png      # Guest Mode Dashboard
+│   ├── figma-screen-4.png      # Authenticated User Dashboard
+│   ├── figma-screen-5.png      # High-Contrast Active SOS State
+│   ├── figma-screen-6.png      # Admin Command Center
+│   ├── architecture-source.drawio # Editable Source File
+│   └── backend-repo-structure.jpg # Backend specific structure
 │
-└── docker-compose.yml          # Container orchestration
+└── docker-compose.yml          # Multi-container orchestration logic
 ```
 ### Branching Strategy
 
@@ -171,11 +198,12 @@ JSON
   "timestamp": "..."
 }
 ```
-## Screenshots & Proof of Work
-
+##  Screenshots & Proof of Work
 ### GitHub Repository
 ![Repo Home](design/01-github-repo-home.jpg)
-![Repo Structure](design/02-repo-structure.jpg)
+![Frontend Repo Structure](design/02-frontend-repo-structure.jpg)
+![Backend Repo Structure](design/backend-repo-structure.jpg)
+
 
 ### GitHub Management
 ![Branches](design/03-github-branches.jpg)
@@ -187,28 +215,23 @@ JSON
 ![Backend Running](design/07-backend-running.jpg)
 ![Frontend UI](design/08-frontend-ui.jpg)
 
-### Design Artifacts
-![Architecture Diagram](design/09-architecture-diaqram.pnq)
-![Figma Screens](design/10-figma-screens.png)
-
 ---
 
 ## Project Status
 
-### ✅ Completed (Review-1 & 2)
+###  Completed (Review-1 & 2)
 * Vision document
 * MoSCoW prioritization
 * 25 GitHub user stories
 * UI design (Figma)
 * Architecture design (Draw.io)
-* Frontend & backend implementation
+* Partial Frontend & backend implementation
 * MongoDB integration
 * Docker & Docker Compose setup
 
-### ⏳ Upcoming
+###  Upcoming
 * Feature enhancements
 * Security hardening
-* Cloud deployment
 * Final testing
 Disclaimer
 This system provides emergency awareness and guidance only and does not replace official emergency services.
