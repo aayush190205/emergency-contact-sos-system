@@ -5,3 +5,8 @@ dist/
 npm-debug.log*
 .DS_Store
 Thumbs.db
+# Testing and Temp files
+.stryker-tmp/
+server/.stryker-tmp/
+server/reports/
+node_modules/

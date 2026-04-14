@@ -2,38 +2,29 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-// Import our modular files
-const { dbState } = require('./models/User');
+
+const { dbState } = require('./models/Database');
 const apiRoutes = require('./routes/apiRoutes');
 
 const app = express();
-const PORT = 5000;
-
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
-// --- CONNECT TO MONGODB ---
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongo:27017/sos_db';
+// MongoDB Connection
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/sos_db';
 
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log(' MongoDB Connected');
-        dbState.isMongoConnected = true; // Update the shared state
-    })
-    .catch(err => console.log(' MongoDB Offline (Using Memory Mode)'));
-
-// --- ROUTES ---
-
-// Health Check
-app.get('/', (req, res) => {
-    res.json({ 
-        status: "System Online", 
-        database: dbState.isMongoConnected ? "MongoDB" : "Memory (Mock)", 
-        timestamp: new Date() 
-    });
+.then(() => {
+    console.log(`✅ MongoDB Connected successfully!`);
+    dbState.isMongoConnected = true; 
+})
+.catch(err => {
+    console.error('❌ MongoDB Connection Error. Using Memory fallback.', err.message);
+    dbState.isMongoConnected = false;
 });
 
-// Mount the API routes
+// All routes (including /api/sos, /api/login, /api/contacts, etc.) are handled here
 app.use('/api', apiRoutes);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Backend Server running on port ${PORT}`));
